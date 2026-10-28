@@ -8,7 +8,7 @@
 2. `git clone https://github.com/rita112025-cpu/Big-Mission.git`，進入 `Big-Mission`。
 3. 在命令提示字元執行 `install_windows.bat`。
 4. 執行 `start_windows.bat`，開啟 http://127.0.0.1:8000 。
-5. 請勿同時啟動第二份服務，SQLite 及排程只設計單一 worker。
+5. 套件版本由 backend/requirements-lock.txt 和 frontend/package-lock.json 固定；兩者不含雜湊簽章式 Python 供應鏈驗證。\n5. 請勿同時啟動第二份服務，SQLite 及排程只設計單一 worker。
 
 注意：Windows Smart App Control 可能阻擋未簽章工具。不要為此關閉保護；使用可信來源的 Python 和 Node 正式安裝版。
 
@@ -16,9 +16,9 @@
 
 ```powershell
 py -3.12 -m venv .venv
-.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
+.venv\Scripts\python.exe -m pip install -r backend\requirements-lock.txt
 cd frontend
-npm install
+npm ci
 npm run build
 cd ..
 $env:PYTHONPATH='backend'
