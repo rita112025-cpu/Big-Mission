@@ -317,8 +317,9 @@ async def scheduler():
 
 @asynccontextmanager
 async def lifespan(app):
+    global stop_event
     initialize()
-    stop_event.clear()
+    stop_event = asyncio.Event()
     worker = asyncio.create_task(scheduler())
     yield
     stop_event.set()
