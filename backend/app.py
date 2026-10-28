@@ -390,7 +390,7 @@ def delete_task(task_id: str):
     return {"deleted": True}
 
 @app.post("/api/tasks/{task_id}/run", status_code=202)
-def run_task(task_id: str):
+async def run_task(task_id: str):
     return {"run_id": start_run(read_task(task_id))}
 
 @app.get("/api/runs")
