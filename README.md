@@ -21,7 +21,7 @@ cd frontend
 npm install
 npm run build
 cd ..
-set PYTHONPATH=backend
+$env:PYTHONPATH='backend'
 .venv\Scripts\python.exe -m uvicorn app:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
